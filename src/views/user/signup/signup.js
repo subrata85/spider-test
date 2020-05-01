@@ -30,7 +30,7 @@ class Signup extends React.Component {
     if (email === "" || regEmail.test(email) !== true) {
       alert("Enter valid email");
     } else if (password === "") {
-      alert("Password email");
+      alert("Enter password");
     } else {
       let data = {
         email: email,

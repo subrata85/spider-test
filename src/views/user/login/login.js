@@ -26,13 +26,14 @@ class Login extends React.Component {
     if (email === "" || regEmail.test(email) !== true) {
       alert("Enter valid email");
     } else if (password === "") {
-      alert("Password email");
+      alert(" Enter password");
     } else {
       const result = users.find(
         (item) => item.email === email && item.password === password
       );
       if (result !== undefined) {
         alert("login success");
+        this.props.history.push("/home");
       }
     }
   };
