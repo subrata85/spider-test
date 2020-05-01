@@ -1,17 +1,19 @@
 import React, { Component } from "react";
+import { Provider } from "../../context/context";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      count: 1,
+    };
   }
+
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <h3>Welcome to our site</h3>
-        </div>
-      </div>
+      <Provider value={this.state}>
+        <div>hello</div>
+      </Provider>
     );
   }
 }
