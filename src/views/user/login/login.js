@@ -1,4 +1,6 @@
 import React from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 class Login extends React.Component {
   constructor(props) {
@@ -6,6 +8,7 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
+      users: [],
     };
   }
 
@@ -18,20 +21,30 @@ class Login extends React.Component {
   };
 
   onLogin = () => {
-    const { email, password } = this.state;
+    const { email, password, users } = this.state;
     const regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (email === "" || regEmail.test(email) !== true) {
       alert("Enter valid email");
     } else if (password === "") {
       alert("Password email");
     } else {
-      let data = {
-        email: email,
-        password: password,
-      };
-      // this.props.userLogin(data);
+      const result = users.find(
+        (item) => item.email === email && item.password === password
+      );
+      if (result !== undefined) {
+        alert("login success");
+      }
     }
   };
+
+  componentDidMount() {
+    if (this.props.userData.createdUser.length > 0) {
+      this.setState({
+        users: this.props.userData.createdUser,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="container">
@@ -93,4 +106,14 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userStore,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({}, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
