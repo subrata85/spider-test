@@ -1,6 +1,37 @@
 import React from "react";
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
+
+  onHandelInputChange = (evt) => {
+    let name = evt.target.name;
+    let value = evt.target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  onLogin = () => {
+    const { email, password } = this.state;
+    const regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    if (email === "" || regEmail.test(email) !== true) {
+      alert("Enter valid email");
+    } else if (password === "") {
+      alert("Password email");
+    } else {
+      let data = {
+        email: email,
+        password: password,
+      };
+      // this.props.userLogin(data);
+    }
+  };
   render() {
     return (
       <div className="container">
@@ -9,42 +40,45 @@ class Login extends React.Component {
             <div className="form-top">
               <div className="form-top-left">
                 <h3>Login to our site</h3>
-                <p>Enter your username and password to log on:</p>
+                <p>Enter your email and password to log on:</p>
               </div>
               <div className="form-top-right">
                 <i className="fa fa-key"></i>
               </div>
             </div>
             <div className="form-bottom">
-              <form role="form" action="" method="post" className="login-form">
-                <div className="form-group">
-                  <label className="sr-only" for="form-username">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    name="form-username"
-                    placeholder="Username..."
-                    className="form-username form-control"
-                    id="form-username"
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="sr-only" for="form-password">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="form-password"
-                    placeholder="Password..."
-                    className="form-password form-control"
-                    id="form-password"
-                  />
-                </div>
-                <button type="submit" className="btn btn-success">
-                  Sign in!
-                </button>
-              </form>
+              <div className="form-group">
+                <label className="sr-only" htmlFor="form-username">
+                  Email
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="email..."
+                  className="form-username form-control"
+                  id="form-username"
+                  onChange={(txt) => this.onHandelInputChange(txt)}
+                />
+              </div>
+              <div className="form-group">
+                <label className="sr-only" htmlFor="form-password">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password..."
+                  className="form-password form-control"
+                  id="form-password"
+                  onChange={(txt) => this.onHandelInputChange(txt)}
+                />
+              </div>
+              <button
+                className="btn btn-success"
+                onClick={() => this.onLogin()}
+              >
+                Sign in!
+              </button>
             </div>
           </div>
         </div>
