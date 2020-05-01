@@ -1,0 +1,12 @@
+.logRegInner {
+  background: #f7f8fa;
+  display: flex;
+}
+.pad20 {
+  padding: 0 20px;
+}
+
+.mdInput {
+  position: relative;
+  line-height: 50px;
+}
