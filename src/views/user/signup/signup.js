@@ -2,14 +2,17 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 // import action
-import { registration } from "../../../reduxModules/actions/index";
+import {
+  registration,
+  resetUserMessage,
+} from "../../../reduxModules/actions/index";
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "a@a.com",
-      password: "1",
+      email: "",
+      password: "",
     };
   }
 
@@ -36,6 +39,16 @@ class Signup extends React.Component {
       this.props.registration(data);
     }
   };
+
+  static getDerivedStateFromProps(newProps) {
+    console.log("newProps", newProps);
+    if (newProps.userData.messageType === "success") {
+      alert(newProps.userData.message);
+      newProps.resetUserMessage();
+    }
+    return true;
+  }
+
   render() {
     const { email, password } = this.state;
     return (
@@ -98,13 +111,16 @@ class Signup extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    userData: state.userStore,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       registration,
+      resetUserMessage,
     },
     dispatch
   );
