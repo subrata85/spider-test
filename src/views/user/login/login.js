@@ -80,7 +80,12 @@ class Login extends React.Component {
                 Sign in!
               </button>
             </div>
-            <a>Signup</a>
+            <a
+              className="btn"
+              onClick={() => this.props.history.push("signup")}
+            >
+              Sign Up
+            </a>
           </div>
         </div>
       </div>

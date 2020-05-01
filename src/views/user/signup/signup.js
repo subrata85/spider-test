@@ -87,7 +87,9 @@ class Signup extends React.Component {
                 Sign Up!
               </button>
             </div>
-            <a href="http://www.google.com">Sign In</a>
+            <a className="btn" onClick={() => this.props.history.push("/")}>
+              Sign In
+            </a>
           </div>
         </div>
       </div>
