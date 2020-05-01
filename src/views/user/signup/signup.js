@@ -1,6 +1,6 @@
 import React from "react";
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,8 +39,8 @@ class Login extends React.Component {
           <div className="col-sm-6 col-sm-offset-3 form-box">
             <div className="form-top">
               <div className="form-top-left">
-                <h3>Login to our site</h3>
-                <p>Enter your email and password to log on:</p>
+                <h3>Sign up to our site</h3>
+                <p>Enter your email and password to signup</p>
               </div>
               <div className="form-top-right">
                 <i className="fa fa-key"></i>
@@ -77,9 +77,10 @@ class Login extends React.Component {
                 className="btn btn-success"
                 onClick={() => this.onLogin()}
               >
-                Sign in!
+                Sign Up!
               </button>
             </div>
+            <a href="http://www.google.com">Sign In</a>
           </div>
         </div>
       </div>
@@ -87,4 +88,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Signup;
