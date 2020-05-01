@@ -1,11 +1,15 @@
 import React from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+// import action
+import { registration } from "../../../reduxModules/actions/index";
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      email: "a@a.com",
+      password: "1",
     };
   }
 
@@ -17,7 +21,7 @@ class Signup extends React.Component {
     });
   };
 
-  onLogin = () => {
+  onSignUp = () => {
     const { email, password } = this.state;
     const regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (email === "" || regEmail.test(email) !== true) {
@@ -29,10 +33,11 @@ class Signup extends React.Component {
         email: email,
         password: password,
       };
-      // this.props.userLogin(data);
+      this.props.registration(data);
     }
   };
   render() {
+    const { email, password } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -54,6 +59,7 @@ class Signup extends React.Component {
                 <input
                   type="text"
                   name="email"
+                  value={email}
                   placeholder="email..."
                   className="form-username form-control"
                   id="form-username"
@@ -67,6 +73,7 @@ class Signup extends React.Component {
                 <input
                   type="password"
                   name="password"
+                  value={password}
                   placeholder="Password..."
                   className="form-password form-control"
                   id="form-password"
@@ -75,7 +82,7 @@ class Signup extends React.Component {
               </div>
               <button
                 className="btn btn-success"
-                onClick={() => this.onLogin()}
+                onClick={() => this.onSignUp()}
               >
                 Sign Up!
               </button>
@@ -88,4 +95,17 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      registration,
+    },
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
