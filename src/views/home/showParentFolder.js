@@ -11,7 +11,13 @@ const ShowParentFolder = (props) => {
               <button
                 type="button"
                 key={index}
-                style={{ marginTop: 10 }}
+                style={{
+                  marginTop: 10,
+                  position: "relative",
+                  marginRight: 10,
+                  border: 0,
+                  background: "transparent",
+                }}
                 onClick={() => value.showChildFolder(index)}
               >
                 <img
@@ -21,18 +27,22 @@ const ShowParentFolder = (props) => {
                   height={80}
                 />
 
-                <div
+                <span
                   style={{
                     // background: "red",
                     color: "#ffffff",
                     position: "absolute",
-                    top: 45,
-                    marginLeft: 15,
+                    top: "50%",
+                    display: "block",
+                    textAlign: "center",
+                    marginTop: -5,
+                    left: 0,
+                    right: 0,
                   }}
                 >
                   {" "}
                   {dir.fileName}
-                </div>
+                </span>
               </button>
             );
           })
