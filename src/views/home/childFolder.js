@@ -1,19 +1,19 @@
 import React from "react";
 import { Consumer } from "../../context/context";
 
-class ShowParentFolder extends React.Component {
+class ShowChildFolder extends React.Component {
   render() {
     return (
       <div>
         <Consumer>
           {(value) =>
-            value.parentFolder.map((dir, index) => {
+            value.childFolder.map((dir, index) => {
               return (
                 <button
                   type="button"
                   key={index}
                   style={{ marginTop: 10 }}
-                  onClick={() => value.showChildFolder(index)}
+                  // onClick={() => value.showChildFolder(index)}
                 >
                   <img
                     alt="fileName"
@@ -24,10 +24,10 @@ class ShowParentFolder extends React.Component {
 
                   <div
                     style={{
-                      // background: "red",
+                      background: "red",
                       color: "#ffffff",
                       position: "absolute",
-                      top: 45,
+                      top: 220,
                       marginLeft: 15,
                     }}
                   >
@@ -44,4 +44,4 @@ class ShowParentFolder extends React.Component {
   }
 }
 
-export default ShowParentFolder;
+export default ShowChildFolder;

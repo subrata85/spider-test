@@ -1,14 +1,17 @@
 import React from "react";
 import { Consumer } from "../../context/context";
 
-class AddParentFolder extends React.Component {
+class AddChildFolder extends React.Component {
   render() {
     return (
       <div>
         <Consumer>
           {(data) => (
-            <button className="btn btn-primary" onClick={data.addFolder}>
-              Add Folder
+            <button
+              className="btn btn-info"
+              onClick={() => data.addChildrenFolder()}
+            >
+              Add Child Folder
             </button>
           )}
         </Consumer>
@@ -17,4 +20,4 @@ class AddParentFolder extends React.Component {
   }
 }
 
-export default AddParentFolder;
+export default AddChildFolder;
