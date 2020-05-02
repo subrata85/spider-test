@@ -77,9 +77,6 @@ class Home extends Component {
       showChildFolder: this.showChildFolder,
       addChildrenFolder: this.addChildrenFolder,
     };
-
-    console.log("index statt", this.state.index);
-    console.log("directory statt", directory);
     return (
       <Provider value={contextValue}>
         <div className="container">
