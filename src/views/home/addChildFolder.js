@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Consumer } from "../../context/context";
 
 const AddChildFolder = (props) => {
+  let [name, setName] = useState("Add Child Folder");
   return (
     <div>
       <Consumer>
@@ -10,7 +11,7 @@ const AddChildFolder = (props) => {
             className="btn btn-info"
             onClick={() => data.addChildrenFolder()}
           >
-            Add Child Folder
+            {name}
           </button>
         )}
       </Consumer>
