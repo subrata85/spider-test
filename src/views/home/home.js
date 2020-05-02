@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Provider } from "../../context/context";
 
 import AddParentFolder from "./addParentFolder";
-import ShowParentFolder from "./parentFolderComponent";
+import ShowParentFolder from "./showParentFolder";
 import AddChildFolder from "./addChildFolder";
-import ShowChildFolder from "./childFolder";
+import ShowChildFolder from "./showChildFolder";
 
 class Home extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class Home extends Component {
         if (index === this.state.index) {
           dir.children.push({
             id: childLen + 1,
-            fileName: "asdfsa",
+            fileName: childFolderName,
           });
         }
         this.setState({
