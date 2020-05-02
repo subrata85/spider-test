@@ -1,7 +1,7 @@
 import React from "react";
 import { Consumer } from "../../context/context";
 
-class AddButton extends React.Component {
+class AddParentFolder extends React.Component {
   cha = (addbtn) => {
     console.log("che", addbtn);
   };
@@ -20,4 +20,4 @@ class AddButton extends React.Component {
   }
 }
 
-export default AddButton;
+export default AddParentFolder;

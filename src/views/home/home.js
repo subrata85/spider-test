@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Provider } from "../../context/context";
 
-import AddButton from "./addButton";
-import FolderComponent from "./folderComponent";
+import AddParentFolder from "./addParentFolder";
+import ParentFolderComponent from "./parentFolderComponent";
 
 class Home extends Component {
   constructor(props) {
@@ -11,15 +11,12 @@ class Home extends Component {
       directory: [
         {
           id: 1,
-          fileName: "Folder1",
-          children: [
-            {
-              id: 100,
-              fileName: "Accountancy",
-            },
-          ],
+          fileName: "For Sale",
+          children: [],
         },
       ],
+      parentFolderName: "",
+      childFolder: [],
     };
   }
 
@@ -27,8 +24,7 @@ class Home extends Component {
     let directory = this.state.directory;
     let dirLength = directory.length;
 
-    var folderName = prompt("Folder name", "");
-    console.log("fol", folderName);
+    var folderName = prompt("Enter folder name", "");
 
     if (folderName) {
       directory.push({
@@ -42,19 +38,31 @@ class Home extends Component {
     }
   };
 
+  showChildFolder = (index) => {
+    let directory = this.state.directory[index];
+    console.log("foldddd", directory);
+    this.setState({
+      parentFolderName: directory.fileName,
+    });
+  };
+
   render() {
-    const { directory } = this.state;
+    const { directory, parentFolderName, childFolder } = this.state;
     const contextValue = {
       folder: this.state.directory,
+      childFolder: this.state.childFolder,
       addFolder: this.addNewFolder,
+      showChildFolder: this.showChildFolder,
     };
     return (
       <Provider value={contextValue}>
         <div className="container">
-          {directory.length > 0 ? <FolderComponent /> : null}
+          {directory.length > 0 ? <ParentFolderComponent /> : null}
           <div style={{ marginTop: 20 }}>
-            <AddButton />
+            <AddParentFolder />
           </div>
+          <hr />
+          {childFolder.length > 0 ? <div>{parentFolderName}</div> : null}
         </div>
       </Provider>
     );
