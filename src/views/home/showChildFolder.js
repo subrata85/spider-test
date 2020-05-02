@@ -24,10 +24,10 @@ class ShowChildFolder extends React.Component {
 
                   <div
                     style={{
-                      background: "red",
+                      // background: "red",
                       color: "#ffffff",
                       position: "absolute",
-                      top: 220,
+                      top: 320,
                       marginLeft: 15,
                     }}
                   >
