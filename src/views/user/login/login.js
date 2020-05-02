@@ -28,12 +28,16 @@ class Login extends React.Component {
     } else if (password === "") {
       alert(" Enter password");
     } else {
-      const result = users.find(
-        (item) => item.email === email && item.password === password
-      );
-      if (result !== undefined) {
-        alert("login success");
-        this.props.history.push("/home");
+      if (users.length > 0) {
+        const result = users.find(
+          (item) => item.email === email && item.password === password
+        );
+        if (result !== undefined) {
+          alert("login success");
+          this.props.history.push("/home");
+        }
+      } else {
+        alert("Please signup for login");
       }
     }
   };
